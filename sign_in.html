@@ -1,0 +1,25 @@
+  
+    <!-- Default form login -->
+	<form action='checklogin.php' method='post' class="text-center border border-light p-5 mx-auto mt-3" style="width:30%">
+
+		<p class="h4 mb-4">Sign in</p>
+
+		<!-- type email offers user validation -->
+		
+		<input type="email" id="email" name="email" class="form-control mb-4" placeholder="E-mail" required />
+		<input type="password" id="pass" name="pass" class="form-control mb-4" placeholder="Password" required />
+		
+		
+		<button class="btn btn-info btn-block my-4" type="submit" name="user" value="student">Sign in as a student</button>
+		<button class="btn btn-info btn-block my-4" type="submit" name="user" value="instructor">Sign in as an instructor</button>
+		
+		<!-- Register -->
+		<p>Not a member?
+			<a onclick="register()">Register</a>
+		</p>
+
+		
+
+	</form>
+	<!-- Default form login -->
+

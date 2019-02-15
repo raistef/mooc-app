@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>EduDay</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- JQuery UI-->
+	<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <!-- Main Script -->
+  <script type="text/javascript" src="script.js"></script>
+  <script>
+	$(document).ready(function() {
+	function findGetParameter(parameterName) {
+		var result = null,
+        tmp = [];
+		var items = location.search.substr(1).split("&");
+		for (var index = 0; index < items.length; index++) {
+        tmp = items[index].split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+		}
+		return result;
+	}
+	
+	url0="my_points.php?email="+findGetParameter("email"); //send get parameters
+	$.ajax({    
+			type: "GET",
+			url: url0,             
+			dataType: "html",                  
+			success: function(response){                    
+				$("#points").html(response); 
+				
+			}
+
+	});
+			
+	url="my_courses.php?email="+findGetParameter("email"); //send get parameters
+	url2="new_password.php?email="+findGetParameter("email"); //send get parameters
+
+		$("#allcourses").click(function() {                
+
+			$.ajax({    
+			type: "GET",
+			url: "all_courses.php",             
+			dataType: "html",                  
+			success: function(response){                    
+				$(".main").html(response); 
+				
+			}
+
+			});
+		});
+		$("#mycourses").click(function() {                
+
+			$.ajax({    
+			type: "GET",
+			url: url,             
+			dataType: "html",                  
+			success: function(response){                    
+				$(".main").html(response); 
+				
+			}
+
+			});
+		});
+		
+		$("#new_pass").click(function() {                
+
+			$.ajax({    
+			type: "GET",
+			url: url2,             
+			dataType: "html",                  
+			success: function(response){                    
+				$(".main").html(response); 
+				
+			}
+
+			});
+		});
+		           
+
+			
+		
+	});
+  
+  </script>
+  <style>
+	#accordion-1{font-size: 14px;}
+  </style>
+</head>
+
+<body>
+	<!-- nav-->
+	<nav class="navbar navbar-expand-lg navbar-dark indigo">
+	  <a class="navbar-brand" href="#">EduDay</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarText">
+		<ul class="navbar-nav mr-auto">
+		  
+		  <li class="nav-item" id="allcourses">
+			<a class="nav-link">All courses</a>
+		  </li>
+		  <li class="nav-item" id="mycourses">
+			<a class="nav-link">My courses</a>
+		  </li>
+		   
+		</ul>
+		<p id="points">
+		Change password
+		</p>
+		<button class="btn btn-primary white-text" id="new_pass">
+		Change password
+		</button>
+		<button class="btn btn-danger white-text" onclick="signout()">
+		  Log out
+		</button>
+	  </div>
+	</nav>
+	<!-- nav-->
+
+	<!-- main-->
+  <div style="height: 100vh" class="main">
+	<h1 class="text-center text-primary" style="font-size:500%;font-weight:bold;margin-top:15%">Welcome to EduDay!</h1>
+ </div>
+  <!-- main-->
+
+  <!-- SCRIPTS -->
+  
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  
+</body>
+
+</html>
